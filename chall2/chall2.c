@@ -35,7 +35,7 @@ int main(int argc, char **argv)
      fclose(fin);
      if (err) {
           fprintf(stderr, "File provided is not in proper format.\n");
-          fprintf(stderr, "=== Error occured on line %d\n.", err);
+          fprintf(stderr, "=== Error occured on line %d\n", err);
           db_free(itemtab.prices);
           db_free(itemtab.names);
           exit(EXIT_FAILURE);
