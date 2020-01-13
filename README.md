@@ -1,4 +1,4 @@
-I'm using git lfs to store the compressed docker image, so the *download may take awhile.*
+I'm using git lfs to store the compressed docker image, so the **download may take awhile.**
 
 
 # Challenge 1
