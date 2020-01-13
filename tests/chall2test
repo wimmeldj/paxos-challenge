@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo -e "\e[32mThere should be no compilation errors printed\e[0m"
+gcc -std=gnu11 -Wall -Wextra -pedantic -o find-pair ../chall2/*.c
+echo -e "\n\e[32mPrint \"Giftcard amount is malformed.\"\e[0m"
+./find-pair ./prices.txt asdf100
+echo -e  "\n\e[32mPrint \"Candy Bar 500, Paperback Book 700\"\e[0m"
+./find-pair ./prices.txt 1200
+echo -e "\n\e[32mPrint \"Not possible\"\e[0m"
+./find-pair ./prices.txt 1199
+echo -e  "\n\e[32mPrint \"Earmuffs 2000, Bluetooth Stereo 6000\"\e[0m"
+./find-pair ./prices.txt 10000
+echo -e "\n\e[32mPrint Headphones 1400, Earmuffs 2000\e[0m"
+./find-pair ./prices.txt 3400
+echo -e  "\n\e[32mShould complain about format of file. Error on line 3\e[0m"
+./find-pair ./pricesbad.txt 10000
+echo -e  "\n\e[32mPrint Headphones 1400, Earmuffs 2000, Bluetooth Stereo 6000\e[0m"
+./find-pair -n 3 prices.txt 10000
+echo -e  "\n\e[32mPrint Candy Bar 500, Paperback Book 700, Detergent 1000\e[0m"
+./find-pair -n 3 prices.txt 2200
+echo -e  "\n\e[32mPrint \"Not possible\"\e[0m"
+./find-pair -n 3 prices.txt 2199

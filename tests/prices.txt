@@ -3,4 +3,6 @@ Paperback Book,        700
 Detergent, 1000
 Headphones, 1400
 Earmuffs, 2000
+
+
 Bluetooth Stereo, 6000
