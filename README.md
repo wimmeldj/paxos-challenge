@@ -12,6 +12,8 @@ You'll need to load it and then run a container that maps port 8080.
 ```
 You can then make the standard requests to `localhost:8080/...`
 
+You can run the tests in [tests/chall1test](./tests/chall1test) after starting the docker image.
+
 If you don't want to use the docker image and you have npm and node installed, you can just run `npm
 start`.
 
@@ -95,12 +97,15 @@ is the same as not providing the `-n` argument.
     ./find-pair -n 2 prices.txt 10000 #=> same
     ./find-pair -n 3 prices.txt 10000 #=> Same again, but find optimum triplet
 ```
+
+Basic tests are provided in [tests/chall2test](./tests/chall2test)
+
 ## Approach Explanation and Question Answers
 
 Obviously, implementing this in C is kind of unnecessary since this could probably be done in 50
 lines of python. But I thought it would be more fun. One part that might be slightly confusing is I
 implemented a basic dynamically resizing array to store the file data. You can read the header
-comments in <./chall2/chall2_lib.h> to see how it's used.
+comments in [chall2_lib.h](./chall2/chall2_lib.h) to see how it's used.
 
 The algorithm is simple and just uses the double pointer narrowing method. Where we have a left most
 pointer (min value) and right most pointer (max value).
@@ -122,11 +127,11 @@ pointer (min value) and right most pointer (max value).
 ### A) Three friends
 
 Allowing for three gifts was implemented in the `three_friends` function in
-<./chall2/chall2.c>. The basic idea is that we can still use the algorithm above on a suffix of
-the prices array, while maintaining a left-most pointer that sweeps over all elements of the array
-starting at 0. When we call the `max_pair_under` function, however, our target isn't actually the
-input giftcard amount, but rather the difference between the giftcard amount and the value at the
-left most pointer `giftamt - prices[i]`.
+[chall2.c](./chall2/chall2.c) The basic idea is that we can still use the algorithm above on a
+suffix of the prices array, while maintaining a left-most pointer that sweeps over all elements of
+the array starting at 0. When we call the `max_pair_under` function, however, our target isn't
+actually the input giftcard amount, but rather the difference between the giftcard amount and the
+value at the left most pointer `giftamt - prices[i]`.
 
 -   **Time complexity is O(n<sup>2</sup>) since we call an O(n) function n times**
 -   **Space complexity is still O(n)**
@@ -148,4 +153,3 @@ avoid duplication of data and bad answers).
 For three friends, it's trickier. You will need to retrieve a head chunk for the left most pointer
 to traverse. And you will need to follow the algorithm above for the suffix array. You continue
 retrieving chunks from the head file pointer until you reach the end of the file.
-
