@@ -255,9 +255,10 @@ void display_results(FILE *stream, int elt_count,
      }
 }
 
-/* max_pair_under: finds pair of numbers in NUMS[FROM:TO] with maximal sum less
+/* max_pair_under: finds pair of numbers in NUMS[FROM:TO) with maximal sum less
  * than or equal to CEIL. Returns the indexes of the pairs in nums. If no pair
- * is found, both members of the pair will be UINT64_MAX. Linear time */
+ * is found, both members of the pair will be UINT64_MAX. Linear time.
+ */
 static struct size_pair max_pair_under(uint64_t ceil, const uint64_t *nums,
                                        size_t from, size_t to)
 {
