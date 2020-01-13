@@ -1,0 +1,15 @@
+#!/bin/bash
+PATH="http://localhost:8080"
+FOO_DIG="2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae"
+BAD_DIG="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+echo -e "\n\e[31mPlease make sure a docker container is running the image provided as detailed in README\e[0m\n\n"
+RES=$(/bin/curl -s -X POST -H "Content-Type: application/json" -d '{"message": "foo"}' ${PATH}/messages)
+echo -e "\e[32mPOST \"foo\":\e[0m $RES\n"
+RES=$(/bin/curl -s ${PATH}/messages/${FOO_DIG})
+echo -e "\e[32mGET \"foo\" with digest:\e[0m $RES\n"
+RES=$(/bin/curl -s ${PATH}/badroute)
+echo -e  "\e[32mGET a route that does not exist\e[0m $RES\n"
+RES=$(/bin/curl -s ${PATH}/messages/${BAD_DIG})
+echo -e "\e[32mGet a message with a digest that does not exist:\e[0m $RES\n"
+RES=$(/bin/curl -s ${PATH}/messages/baddigest)
+echo -e "\e[32mGet a message with a malformed digest:\e[0m $RES\n"
