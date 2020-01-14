@@ -48,7 +48,7 @@ Another potential point of failure due to an increased user base would be the se
 application is running on. To decrease the overall load on the api, you would want to horizontally
 scale this to multiple machines and have a load balancer route requests to these machines.
 
-You could also use a CDN to decrease load on both the database servers and pi servers. AWS
+You could also use a CDN to decrease load on both the database servers and api servers. AWS
 cloudfront would be one option for this. And if you're using a pull cdn, you might be able to avoid
 having an in-memory database altogether.
 
@@ -149,7 +149,7 @@ for both of these locations after retrieving them. When either pointer (left or 
 end of a chunk, free the memory allocated for the chunk and retrieve another chunk from either the
 file pointer at the head (left) or the tail (right).
 
-You would continue this process until when retrieving a chunk, the head and tail file pointer are
+You would continue this process until when retrieving a chunk, the head and tail file pointers are
 about to cross. At this point, you just return the chunk between the head and tail file pointers (to
 avoid duplication of data and bad answers).
 
