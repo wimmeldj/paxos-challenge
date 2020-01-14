@@ -6,7 +6,7 @@
 You can build the docker image and container using the makefile in /chall1. By default, it will map
 the container's port 8080 to your port 8080. If you'd like to use a different port, you can edit the
 HOST variable in [chall1/Makefile](./chall1/Makefile). But if you want the tests to run, you'll also
-have to edit the PORT varaible in [tests/chall1test](./tests/chall1test) to be the same value.
+have to edit the PORT variable in [tests/chall1test](./tests/chall1test) to be the same value.
 
 Go to chall1/ and run. You need sudo because docker requires it.
 
