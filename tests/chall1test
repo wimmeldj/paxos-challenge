@@ -1,5 +1,6 @@
 #!/bin/bash
-PATH="http://localhost:8080"
+PORT=8080
+PATH="http://localhost:$PORT"
 FOO_DIG="2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae"
 BAD_DIG="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 echo -e "\n\e[31mPlease make sure a docker container is running the image provided as detailed in README\e[0m\n\n"

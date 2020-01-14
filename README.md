@@ -1,25 +1,39 @@
-I'm using git lfs to store the compressed docker image, so the **download may take awhile.**
-
-
 # Challenge 1
 
 
 ## Running
 
-I provided the docker image as a gzipped tarball in the `chall1` directory.
+You can build the docker image and container using the makefile in /chall1. By default, it will map
+the container's port 8080 to your port 8080. If you'd like to use a different port, you can edit the
+HOST variable in [chall1/Makefile](./chall1/Makefile). But if you want the tests to run, you'll also
+have to edit the PORT varaible in [tests/chall1test](./tests/chall1test) to be the same value.
 
-You'll need to load it and then run a container that maps port 8080.
+Go to chall1/ and run. You need sudo because docker requires it.
+
 ```shell
-    docker load --input paxos-chall1.tar.gz
-    docker run -p 8080:8080 wimmeldj/paxos-chall1:latest
+    sudo make
 ```
-You can then make the standard requests to `localhost:8080/...`
 
-You can run the tests in [tests/chall1test](./tests/chall1test) after starting the docker image.
+This may take awhile if you don't already have the node:13.6.0 docker image.
+
+After the container is built, you can run:
+
+``` shell
+    sudo docker start -a wimmeldj
+```
+
+In a separate shell, you can then make the standard requests to `localhost:8080/...`. You can also
+run the tests in [tests/chall1test](./tests/chall1test) after starting the docker image.
 
 If you don't want to use the docker image and you have npm and node installed, you can just run `npm
 start`.
 
+When you're done, you can run the following in /chall1 to remove my image and container. This won't
+remove the node image though since you might want to reinstall, etc.
+
+``` shell
+    sudo make clean
+```
 
 ## Approach Explanation and Question Answers
 
@@ -85,7 +99,7 @@ be linked to an application running on an internal network for testing new featu
 You shouldn't get *any* errors when running the compilation below. Do this in the `chall2`
 directory.
 ```shell
-    gcc -std=gnu11 -Wall -Wextra -pedantic -o find-pair *.c
+    make find-pair clean
 ```
 If you can't compile, though, I provided the binary "find-pair" for the `x86_64-pc-linux-gnu` gcc
 target which you should be able to run on any modern 64 bit linux virtual machines.
