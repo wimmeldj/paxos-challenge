@@ -1,4 +1,4 @@
-CC     = gcc
+CC     = clang
 CFLAGS = -std=gnu11 -Wall -Wextra -pedantic
 
 
