@@ -96,6 +96,10 @@ be linked to an application running on an internal network for testing new featu
 
 ## Compiling/Running
 
+**Addendum**: I forgot to add that the [Makefile](./chall2/Makefile) uses gcc by
+default. If you don't have gcc installed, but you do have clang, you can easily
+change the CC variable at the top of the makefile to `clang` instead.
+
 You shouldn't get *any* errors when running the compilation below. Do this in the `chall2`
 directory.
 ```shell
